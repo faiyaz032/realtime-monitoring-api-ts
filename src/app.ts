@@ -1,4 +1,6 @@
 //dependencies
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import { defaultErrorHandler, notFoundHandler } from './middlewares/errorHandlers';
@@ -9,6 +11,10 @@ const app = express();
 
 //configure env files
 dotenv.config();
+
+app.use(cors({ origin: true, credentials: true }));
+
+app.use(cookieParser());
 
 //enable middlewares
 app.use(express.json());
